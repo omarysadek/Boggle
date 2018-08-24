@@ -11,4 +11,3 @@ interface GridSearchInterface
      */
     public function find($word);
 }
-

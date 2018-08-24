@@ -87,12 +87,13 @@ class Grid implements GridSearchInterface
             $this->usedGrid[$x][$y] = true;
             $this->findNextLetter($letters, ($x), ($y-1));
         }
+
+        $this->usedGrid = [];
     }
 
     private function isThereAndNotALreadyUsed($x, $y, $letter)
     {
         return (isset($this->grid[($x)][($y)]) && ($this->grid[($x)][($y)] === $letter) && (!isset($this->usedGrid[$x][$y])));
-
     }
 
     /**
@@ -108,19 +109,15 @@ class Grid implements GridSearchInterface
         $firstLetter = $this->takeOffFirstElm($letters);
 
         if (!isset($this->indexedGrid[$firstLetter])) {
-
             return false;
         }
 
         foreach ($this->indexedGrid[$firstLetter] as $indexedGridFirstLetter) {
-            $this->usedGrid = [];
-            if (
-                $this->findNextLetter(
-                    $letters,
-                    $indexedGridFirstLetter['x'],
-                    $indexedGridFirstLetter['y']
-                )
-            ) {
+            if ($this->findNextLetter(
+                $letters,
+                $indexedGridFirstLetter['x'],
+                $indexedGridFirstLetter['y']
+            )) {
                 //return $findedNextLetter;
             }
         }
@@ -136,7 +133,6 @@ class Grid implements GridSearchInterface
     private function takeOffFirstElm(&$array)
     {
         if (empty($array)) {
-
             return;
         }
         $firstElem = $array[0];

@@ -21,10 +21,11 @@ class Boggle
      * @var GridSearchInterface $grid
      * @var OutputInterface $output
      */
-    public function __construct(GridSearchInterface $grid, OutputInterface $output) {
+    public function __construct(GridSearchInterface $grid, OutputInterface $output)
+    {
         $this->grid = $grid;
         $this->output = $output;
-     }
+    }
 
     /**
      * @var string $word

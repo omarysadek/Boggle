@@ -3,18 +3,20 @@
 ## Summary
 
 - [*Installation*](#installation)
-- [*Question 1: Anagrams*](#question-1:-anagrams)
-- [*Question 1: Boggle*](#question-1:-boggle)
+- [*Question One: Anagrams*](#question-one:-anagrams)
+- [*Question Two: Boggle*](#question-two:-boggle)
 
 ## Installation
 
 Install vendors
 
 ```
+$ git clone git@github.com:omarysadek/tumblr.git
+$ cd tumblr/
 $ composer update
 ```
 
-## Question 1: Anagrams
+## Question One: Anagrams
 
 | Task          | Time   |
 |---------------|--------|
@@ -32,7 +34,7 @@ $ vendor/bin/phpunit --group anagram
 
 _Tests cases are written here => Tests\AnagramTest.php_
 
-## Question 2: Boggle
+## Question Two: Boggle
 
 | Task          | Time   |
 |---------------|--------|
@@ -73,6 +75,6 @@ $ php console.php boggle
 > party => false
 > Please enter a word : stick
 > stick => false
-> Please enter a word :
+> Please enter a word : ^C
 
 @toDo unit tests

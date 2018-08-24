@@ -63,7 +63,6 @@ class BoggleCommand extends Command
             $letter = $this->getWordAnswer('Please enter a word :');
             $boggle->search($letter, $output);
         }
-
     }
 
     /**

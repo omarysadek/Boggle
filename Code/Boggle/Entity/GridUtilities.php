@@ -2,7 +2,7 @@
 
 namespace OS\Code\Boggle\Entity;
 
-use  OS\Code\Boggle\Entity\Grid;
+use OS\Code\Boggle\Entity\Grid;
 
 class GridUtilities
 {
@@ -16,7 +16,7 @@ class GridUtilities
         $grid = [];
         for ($i=0; $i < $gridSize; $i++) {
             for ($j=0; $j < $gridSize; $j++) {
-                $grid[$i][$j] = $letter = chr(rand(97,122));
+                $grid[$i][$j] = $letter = chr(rand(97, 122));
             }
         }
 
@@ -47,7 +47,6 @@ class GridUtilities
             $j = 0;
             $lineAsArray = str_split($line);
             foreach ($lineAsArray as $letter) {
-
                 if (!ctype_alpha($letter)) {
                     throw new \RuntimeException('Invalid letter, only letters from a to z are allowed');
                 }

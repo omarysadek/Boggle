@@ -43,7 +43,7 @@ class WordsUtilities
                 }
             }
 
-            if($errors) {
+            if ($errors) {
                 continue;
             }
 
