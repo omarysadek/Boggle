@@ -50,50 +50,55 @@ class Grid implements GridSearchInterface
 
     /**
      * @param string $letters
-     * @param int $letters
-     * @param int $letters
-     *
-     * @return bool
+     * @param int $x
+     * @param int $y
+     * @param array $usedGrid
      */
-    private function findNextLetter($letters, $x, $y)
+    private function findNextLetter($letters, $x, $y, $usedGrid)
     {
         $firstLetter = $this->takeOffFirstElm($letters);
 
-        if ($this->isThereAndNotALreadyUsed($x+1, $y, $firstLetter)) {
+        if ($this->isThereAndNotALreadyUsed($x+1, $y, $firstLetter, $usedGrid)) {
             if (empty($letters)) {
                 $this->findResult = true;
             }
-            $this->usedGrid[$x][$y] = true;
-            $this->findNextLetter($letters, ($x+1), ($y));
+            $usedGrid[$x][$y] = true;
+            $this->findNextLetter($letters, $x+1, $y, $usedGrid);
         }
-        if ($this->isThereAndNotALreadyUsed($x, $y+1, $firstLetter)) {
+        if ($this->isThereAndNotALreadyUsed($x, $y+1, $firstLetter, $usedGrid)) {
             if (empty($letters)) {
                 $this->findResult = true;
             }
-            $this->usedGrid[$x][$y] = true;
-            $this->findNextLetter($letters, ($x), ($y+1));
+            $usedGrid[$x][$y] = true;
+            $this->findNextLetter($letters, $x, $y+1, $usedGrid);
         }
-        if ($this->isThereAndNotALreadyUsed($x-1, $y, $firstLetter)) {
+        if ($this->isThereAndNotALreadyUsed($x-1, $y, $firstLetter, $usedGrid)) {
             if (empty($letters)) {
                 $this->findResult = true;
             }
-            $this->usedGrid[$x][$y] = true;
-            $this->findNextLetter($letters, ($x-1), ($y));
+            $usedGrid[$x][$y] = true;
+            $this->findNextLetter($letters, $x-1, $y, $usedGrid);
         }
-        if ($this->isThereAndNotALreadyUsed($x, $y-1, $firstLetter)) {
+        if ($this->isThereAndNotALreadyUsed($x, $y-1, $firstLetter, $usedGrid)) {
             if (empty($letters)) {
                 $this->findResult = true;
             }
-            $this->usedGrid[$x][$y] = true;
-            $this->findNextLetter($letters, ($x), ($y-1));
+            $usedGrid[$x][$y] = true;
+            $this->findNextLetter($letters, $x, $y-1, $usedGrid);
         }
-
-        $this->usedGrid = [];
     }
 
-    private function isThereAndNotALreadyUsed($x, $y, $letter)
+    /**
+     * @param int $x
+     * @param int $y
+     * @param string $letter
+     * @param array $usedGrid
+     *
+     * @return bool
+     */
+    private function isThereAndNotALreadyUsed($x, $y, $letter, $usedGrid)
     {
-        return (isset($this->grid[($x)][($y)]) && ($this->grid[($x)][($y)] === $letter) && (!isset($this->usedGrid[$x][$y])));
+        return (isset($this->grid[($x)][($y)]) && ($this->grid[($x)][($y)] === $letter) && (!isset($usedGrid[$x][$y])));
     }
 
     /**
@@ -113,13 +118,11 @@ class Grid implements GridSearchInterface
         }
 
         foreach ($this->indexedGrid[$firstLetter] as $indexedGridFirstLetter) {
-            if ($this->findNextLetter(
-                $letters,
-                $indexedGridFirstLetter['x'],
-                $indexedGridFirstLetter['y']
-            )) {
-                //return $findedNextLetter;
-            }
+            $x = $indexedGridFirstLetter['x'];
+            $y = $indexedGridFirstLetter['y'];
+            $usedGrid = [];
+            $usedGrid[$x][$y] = true;
+            $this->findNextLetter($letters, $x, $y, $usedGrid);
         }
 
         return $this->findResult;

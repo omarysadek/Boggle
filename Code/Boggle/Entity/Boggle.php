@@ -38,7 +38,7 @@ class Boggle
         }
 
         $this->output->writeln($word . ' => false');
-        return true;
+        return false;
     }
 
     public function display()
