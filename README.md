@@ -3,8 +3,8 @@
 ## Summary
 
 - [*Installation*](#installation)
-- [*Question One: Anagrams*](#question-one:-anagrams)
-- [*Question Two: Boggle*](#question-two:-boggle)
+- [*Question One Anagrams*](#question-one-anagrams)
+- [*Question Two Boggle*](#question-two-boggle)
 
 ## Installation
 
