@@ -141,6 +141,8 @@ $ php console.php boggle
         - when sending a message to a user, instead of inserting it directly to the DDB, we can creat an event on RabbitMQ, the listener will broadcast this message to the users and save it in the DDB
     - Microservices : if there are a lot of users
 
+### Entities
+
 ### User
 
 | name       | type    | comments |
