@@ -12,8 +12,8 @@
 Install vendors
 
 ```
-$ git clone git@github.com:omarysadek/Boggle.git
-$ cd Boggle/
+$ git clone git@github.com:omarysadek/boggle.git
+$ cd boggle/
 $ composer update
 ```
 
